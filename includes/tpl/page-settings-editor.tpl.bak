@@ -1,0 +1,43 @@
+<div class="habblet-container" style="float:left; width: 560px;"> 
+<div class="cbb clearfix settings"> 
+ 
+<h2 class="title">Edit your Zap Account</h2> 
+<div class="box-content"> 
+
+<?php if(isset($_POST["SET_NEW_VALUES"])) {
+	if($_POST["block_fr_h"] == "1") {
+		dbquery("UPDATE users SET block_newfriends = '0' WHERE id = '" . USER_ID . "'");
+	} elseif($_POST["block_fr_h"] == "0") {
+		dbquery("UPDATE users SET block_newfriends = '1' WHERE id = '" . USER_ID . "'");
+	}
+
+	dbquery("UPDATE users SET forumname = '" . filter($_POST["forum_user"]) . "' WHERE id = '" . USER_ID . "'");
+ ?> 
+ 
+ 	<div class="rounded rounded-green">
+		Your account has been updated successfully.<br />
+	</div>
+	<div>&nbsp;</div>
+	
+	<?php
+	}
+	
+
+$lol = dbquery("SELECT * FROM users WHERE username = '" . USER_NAME . "'");
+$lolassoc = mysql_fetch_assoc($lol);
+
+$fr_val = $lolassoc['block_newfriends'];
+
+?>
+	
+<form method="post">
+<input type="checkbox" name="block_fr" value="<?php echo $fr_val; if($fr_val == "1"){ echo '"checked=checked"'; } ?>" align="left" /> Block incoming friend requests <br />
+<input type="hidden" name="block_fr_h" value="<?php echo $fr_val; ?>"> <br />
+Forum Account <br /> <input type="text" name="forum_user" value="<?php echo mysql_result(mysql_query("SELECT forumname FROM users WHERE id = '" . USER_ID . "'"), 0); ?>" /><br />
+<br />
+<input type="submit" value="Save settings" name="SET_NEW_VALUES" />
+</form>
+</div> 
+
+</div> 
+</div> 

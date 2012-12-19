@@ -1,0 +1,1 @@
+﻿<cfset iniFile = expandPath("/config.ini")><cfset DSN = getProfileString(iniFile, "coldfusion", "DSN")><cfset server_used = getProfileString(iniFile, "settings", "server")><cfquery name = "onlineusers" datasource = "#DSN#">SELECT * FROM server_status</cfquery><cfoutput query="onlineusers">#users_online#</cfoutput>

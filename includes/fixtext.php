@@ -1,0 +1,41 @@
+<?php
+
+function fixText($str, $clean = false)
+	{
+		$str = str_replace("Â¡","¡",$str);
+		$str = str_replace("Â¿","¿",$str);
+		$str = str_replace("í‘","Ñ",$str);
+		$str = str_replace("Ã±","ñ",$str);
+		$str = str_replace("í","Á",$str);
+		$str = str_replace("Ã¡","á",$str);
+		$str = str_replace("í‰","É",$str);
+		$str = str_replace("Ã©","é",$str);
+		$str = str_replace("í“","Ó",$str);
+		$str = str_replace("Ã³","ó",$str);
+		$str = str_replace("íš","Ú",$str);
+		$str = str_replace("Ãº","ú",$str);
+		$str = str_replace("í","Í",$str);
+		$str = str_replace("Ã","í",$str);
+//		$str = str_replace("\'","'",$str);
+//		$str = str_replace('\"','"',$str);
+	
+		if($clean)
+		{
+			$str = str_replace("Ñ","N",$str);
+			$str = str_replace("ñ","n",$str);
+			$str = str_replace("Á","A",$str);
+			$str = str_replace("á","a",$str);
+			$str = str_replace("É","E",$str);
+			$str = str_replace("é","e",$str);
+			$str = str_replace("Ó","O",$str);
+			$str = str_replace("ó","o",$str);
+			$str = str_replace("Ú","U",$str);
+			$str = str_replace("ú","u",$str);
+			$str = str_replace("Í","I",$str);
+			$str = str_replace("í","i",$str);
+		}
+	
+		return $str;
+	}
+
+?>

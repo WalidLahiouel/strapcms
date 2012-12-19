@@ -1,0 +1,40 @@
+<div class="habblet-container ">		
+<div class="cbb clearfix red "> 
+
+<h2 class="title">Buy a Throne ($3 USD)</h2>
+<?php $Z = mysql_fetch_assoc(mysql_query("SELECT * FROM users WHERE username = '" . USER_NAME . "'"));
+	if($Z['online']=="1")
+	{
+		echo '<br /><center><img src="images/qmark.gif"></center><br /><div class="rounded rounded-red" width="20%">
+					YOU MUST KEEP YOUR CLIENT CLOSED DURING THE ENTIRE PROCESS OF BUYING THRONES OR YOU WILL NOT RECIEVE IT<br />
+				</div>
+				<div>&nbsp;</div>';
+	}
+	else
+	{
+	?>
+<center>
+<br>
+<?php /*
+<a href='buy_s.php'><img src='ap.gif'></a> */ ?>
+<center><div class="rounded rounded-red" width="20%">
+					YOU MUST KEEP YOUR CLIENT CLOSED DURING THE ENTIRE PROCESS OF BUYING THRONES OR YOU WILL NOT RECIEVE IT<br />
+				</div>
+				<div>&nbsp;</div></center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="custom" value="<?php echo USER_ID; ?>">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+
+</center>
+
+<?php } ?>
+
+</div></div>

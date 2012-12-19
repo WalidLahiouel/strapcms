@@ -1,0 +1,55 @@
+<?php
+
+if (!defined('IN_HK') || !IN_HK)
+{
+	exit;
+}
+
+if (!HK_LOGGED_IN)
+{
+	exit;
+}
+
+require_once "top.php";
+?>			
+<p>
+	<h1>The All Seeing Eye // Version 1</h1>
+	<br />
+	Welcome to the Zap Hotel All Seeing Eye Remote Hotel Management panel. This is strictly for staff use - any abuse of the tools to the left will result in immediate termination.
+	<br />
+	<br />
+	<font size='4'><strong>UPDATES - </strong>Moderators now have the EVENTS ALERT tool - now you can host events and alert them via the hotel housekeeping. NO EXCUSES. Click <a href='index.php?_cmd=eha'>HERE</a></font>
+</p>
+
+<br />
+
+
+
+<br />
+<br />
+
+<center><p>
+	<a style="font-size: 120%;" href="http://zaphotel.net/manage/index.php?_cmd=uberdown">
+	
+
+		
+		<b style="color: darkred; font-size: 120%;">
+		ALERT AN ADMINISTRATOR OF HOTEL DOWNTIME
+		</b>
+	
+	</a>
+</p>
+</center>
+<br />
+
+
+<br />
+
+<br /><br />
+
+
+<?php
+
+require_once "bottom.php";
+
+?>

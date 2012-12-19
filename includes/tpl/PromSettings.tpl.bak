@@ -1,0 +1,36 @@
+<?php
+	if(isset($_POST["Enter"]))
+	{
+		if(!mysql_num_rows(mysql_query("SELECT * FROM prom_nominees WHERE nominee = '" . USER_NAME . "'")))
+		{
+			mysql_query("INSERT INTO `prom_nominees` (nominee, votes) VALUES ('" . USER_NAME . "', '0')");
+			header("Location: profile?page=4");
+		}
+		else
+		{
+			header("Location: profile?page=4");
+		}
+	}
+?><div class="habblet-container" style="float:left; width: 560px;"> 
+<div class="cbb clearfix settings"> 
+ 
+<h2 class="title">Prom Settings</h2> 
+<div class="box-content"> 
+<?php
+
+if(mysql_num_rows(mysql_query("SELECT * FROM prom_nominees WHERE nominee = '" . USER_NAME . "'")))
+{
+	echo "You are already entered in the prom. :)";
+}
+else
+{
+	echo 'You aren\'t entered in the prom, <br /> <form method="post">
+			<input type="submit" value="Enter me in the Prom NOW!" name="Enter">
+		  </form>';
+}
+
+?>
+</div> 
+
+</div> 
+</div> 

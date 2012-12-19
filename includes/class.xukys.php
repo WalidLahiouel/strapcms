@@ -1,0 +1,53 @@
+<?php
+function file_get_contents_curl($url) {
+	$ch = curl_init();
+	
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Set curl to return the data instead of printing it to the browser.
+	curl_setopt($ch, CURLOPT_URL, $url);
+	
+	$data = curl_exec($ch);
+	curl_close($ch);
+	
+	return $data;
+}
+
+function fixTextT($str, $clean = false)
+	{
+		$str = str_replace("Â¡","¡",$str);
+		$str = str_replace("Â¿","¿",$str);
+		$str = str_replace("í‘","Ñ",$str);
+		$str = str_replace("Ã±","ñ",$str);
+		$str = str_replace("í","Á",$str);
+		$str = str_replace("Ã¡","á",$str);
+		$str = str_replace("í‰","É",$str);
+		$str = str_replace("Ã©","é",$str);
+		$str = str_replace("í“","Ó",$str);
+		$str = str_replace("Ã³","ó",$str);
+		$str = str_replace("íš","Ú",$str);
+		$str = str_replace("Ãº","ú",$str);
+		$str = str_replace("í","Í",$str);
+		$str = str_replace("Ã","í",$str);
+//		$str = str_replace("\'","'",$str);
+//		$str = str_replace('\"','"',$str);
+	
+		if($clean)
+		{
+			$str = str_replace("Ñ","N",$str);
+			$str = str_replace("ñ","n",$str);
+			$str = str_replace("Á","A",$str);
+			$str = str_replace("á","a",$str);
+			$str = str_replace("É","E",$str);
+			$str = str_replace("é","e",$str);
+			$str = str_replace("Ó","O",$str);
+			$str = str_replace("ó","o",$str);
+			$str = str_replace("Ú","U",$str);
+			$str = str_replace("ú","u",$str);
+			$str = str_replace("Í","I",$str);
+			$str = str_replace("í","i",$str);
+		}
+	
+		return $str;
+	}
+
+?>

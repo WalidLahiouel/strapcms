@@ -1,0 +1,240 @@
+<?php 
+$_SESSION['id'] = $users->GetUserVar(USER_ID, 'id'); 
+
+?> 
+<div class="habblet-container "> 
+<div class="cbb clearfix notitle "> 
+
+
+<div id="article-wrapper"> 
+
+<h2>%news_article_title%</h2> 
+
+<div class="article-meta"> 
+<?php if ($news_article_id > 0) { ?> 
+%news_article_date% 
+%news_category% 
+<?php } ?> 
+</div> 
+
+<?php if (strlen(trim($news_article_summary)) > 0) { ?> 
+<p class="summary"> 
+
+%news_article_summary% 
+
+</p> 
+<?php } ?> 
+
+<div class="article-body"> 
+
+%news_article_body% 
+<div id="fb-root"></div>
+<script>(function(d){
+  var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=247482251955636&xfbml=1";
+  d.getElementsByTagName('head')[0].appendChild(js);
+}(document));</script>
+<div class="fb-like" data-href="http://facebook.com/ZapHotel" data-send="false" data-width="450" data-show-faces="false"></div>
+</div> 
+
+<?php if ($news_article_id > 0) { ?> 
+<script type="text/javascript" language="Javascript"> 
+document.observe("dom:loaded", function() { 
+$$('.article-images a').each(function(a) { 
+Event.observe(a, 'click', function(e) { 
+Event.stop(e); 
+Overlay.lightbox(a.href, "Image is loading"); 
+}); 
+}); 
+
+$$('a.article-%news_article_id%').each(function(a) { 
+a.replace(a.innerHTML); 
+}); 
+}); 
+</script> 
+<?php } ?> 
+
+</div> 
+
+</div> 
+</div> 
+<?php 
+if(isset($_POST['post_comment'])) 
+$posted_on = date("M j, Y g:i A"); 
+if (! isset($_POST['comment'])) { 
+$_POST['comment'] = ''; // nu bestaat de variabele ten minste 
+} 
+$getUserPostsD = dbquery("SELECT * FROM site_news_comments WHERE userid = '" . USER_ID . "' && article = '" . $news_article_id . "'");
+$userPostsD = mysql_num_rows($getUserPostsD);
+
+$comment = filter($_POST["comment"]); 
+if($comment == NULL){ 
+$error_message = 'You have left a field empty.<br /><br />'; 
+}elseif($comment == "First" || $comment == "1st" || $comment == "f1r5t" || $comment == "2nd" || $comment == "Second" || $comment == "53c0nd" || $comment == "s3c0nd" || $comment == "3rd" || $comment == "Th1rd")
+{ 
+$error_message = '<b>First second third comments are not tolerated.<br /><br />';
+}
+elseif($userPostsD >= 1)
+{
+	define('ERROR', 'Sorry, you cannot post more than one comment per article.');
+}
+else
+{
+if (LOGGED_IN) 
+{ 
+mysql_query("INSERT INTO site_news_comments (article, userid, comment, posted_on) VALUES ('".$news_article_id."', '".$_SESSION['id']."', '".$comment."', '".$posted_on."');"); 
+	define('SUCCESS', 'You have successfully posted a comment on this news article!');
+} 
+}
+
+$getUserPosts = dbquery("SELECT * FROM site_news_comments WHERE userid = '" . USER_ID . "' && article = '" . $news_article_id . "'");
+$userPosts = mysql_num_rows($getUserPosts);
+
+
+?> 
+
+<div class="habblet-container "> 
+<div class="cbb clearfix notitle "> 
+<div id="article-wrapper"><h2>Place Comment</h2> 
+<div class="article-meta"></div> 
+<div class="article-body"> 
+<?php
+if($userPosts >= 1)
+{
+	define('ERROR', 'Sorry, you are only allowed one comment per article.');
+}
+if(defined("SUCCESS") && defined("ERROR")){
+?>
+<div class="rounded rounded-green" width="20%">
+					<?php echo SUCCESS; ?><br />
+				</div>
+				<div>&nbsp;</div>
+<?php
+}
+if(defined("ERROR")) {
+?>
+<div class="rounded rounded-red" width="20%">
+					<?php echo ERROR; ?><br />
+				</div>
+				<div>&nbsp;</div>
+<?php
+}
+else
+{
+?>
+<form action="" method="post"> 
+<textarea name="comment" maxlength="500"></textarea><br /><br /> 
+<input type="submit" name="post_comment" value="Place Comment" /> 
+</form>
+<?php
+}
+?> 
+</div> 
+</div> 
+</div> 
+</div> 
+
+<style type="text/css"> 
+input[type="text"], input[type="password"] { 
+background-color: #F1F1F1; 
+border: 1px solid #999999; 
+width: 175px; 
+padding: 5px; 
+font-family: verdana; 
+font-size: 10px; 
+color: #666666; 
+} 
+input[type="submit"] { 
+background-color: #F1F1F1; 
+border: 1px solid #999999; 
+padding: 5px; 
+font-family: verdana; 
+font-size: 10px; 
+color: #666666; 
+} 
+textarea { 
+background-color: #F1F1F1; 
+border: 1px solid #999999; 
+padding: 5px; 
+width: 517px; 
+height: 70px; 
+font-family: verdana; 
+font-size: 10px; 
+color: #666666; 
+} 
+select { 
+background-color: #F1F1F1; 
+border: 1px solid #999999; 
+padding: 5px; 
+font-family: verdana; 
+font-size: 10px; 
+color: #666666; 
+} 
+</style> 
+<?php 
+$getComments = mysql_query("SELECT * FROM site_news_comments WHERE article = '".$news_article_id."' ORDER by id ASC"); 
+?> 
+<div class="habblet-container "> 
+<div class="cbb clearfix notitle "> 
+<div id="article-wrapper"><h2>Comments (<?php echo mysql_num_rows($getComments); ?>)</h2> 
+<div class="article-meta"></div> 
+<div class="article-body"> 
+<?php 
+if(mysql_num_rows($getComments) == 0){ 
+echo 'Sorry, there is no comments!'; 
+}else{ 
+echo '<table width="528px">'; 
+while($Comments = mysql_fetch_array($getComments)){ 
+$getUserInfo = mysql_query("SELECT * FROM users WHERE id = '".$Comments['userid']."'"); 
+$userInfo = mysql_fetch_array($getUserInfo); 
+echo ' 
+<tr> 
+<td width="150px" valign="top"> 
+<div style="float:left"><img src="http://zaphotel.net/inc/imager.php?figure='.$userInfo['look'].'&size=b&direction=2&head_direction=3&gesture=sml&size=m"></div> 
+'; 
+
+echo '<div style="position: absolute; margin-left: 50px; margin-top: 40px;"><b>Rank:</b></div>';
+if($userInfo['rank'] == 10 || $userInfo['rank'] == 9){
+echo '<div style="position: absolute; margin-left: 41px; margin-top: 50px;"><img src="http://zaphotel.net/c_images/album1584/US09.gif"></div>'; 
+}
+elseif($userInfo['rank'] == 7 || $userInfo['rank'] == 8){ 
+echo '<div style="position: absolute; margin-left: 41px; margin-top: 50px;"><img src="http://zaphotel.net/c_images/album1584/ADN.gif"></div>'; 
+} 
+elseif($userInfo['rank'] == 3 || $userInfo['rank'] == 2){
+echo '<div style="position: absolute; margin-left: 41px; margin-top: 50px;"><img src="http://zaphotel.net/c_images/album1584/VIP.gif"></div>'; 
+}
+elseif($userInfo['rank'] == 4 || $userInfo['rank'] == 5 || $userInfo['rank'] == 6){
+echo '<div style="position: absolute; margin-left: 41px; margin-top: 50px;"><img src="http://zaphotel.net/c_images/album1584/ADM.gif"></div>'; 
+}
+elseif($userInfo['rank'] == 1)
+{
+echo '<div style="position: absolute; margin-left: 41px; margin-top: 50px;"><img src="http://zaphotel.net/c_images/album1584/HC1.gif"></div>'; 
+}
+echo '<div style="position:absolute; margin-left: 15px; margin-top: 110px; "><b><a href="http://zaphotel.net/home/' . $userInfo['username'] . '">' . $userInfo['username'] . '</b></a></div>';
+
+echo ' 
+</td> 
+<td width="427px" valign="top"> ';
+echo '
+<strong>
+RE - %news_article_title% ';  if($users->hasFuse(USER_ID, 'fuse_admin')) { echo '<form method="post" ><input type="image" src="http://zaphotel.net/images/delete.png" value="Delete" alt="Delete Comment" name="bean_deletePost"><input type="hidden" name="value" value="' . USER_ID . '"><input type="hidden" name="id" value="' . $news_article_id . '"> </form>'; } echo '
+</strong><br /><br />'.$Comments['comment'].' 
+</td> 
+</tr> 
+<tr> 
+<td width="90px" valign="top"> 
+</td> 
+<td width="427px" align="right"> <br /><br /> 
+</td> 
+</tr>'; 
+} 
+echo '</table>'; 
+} 
+?> 
+</div> 
+</div> 
+</div> 
+</div> 
+
+<script type="text/javascript">if (!$(document.body).hasClassName('process-template')) { Rounder.init(); }</script>

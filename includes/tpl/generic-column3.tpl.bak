@@ -1,0 +1,30 @@
+<div id="column3" class="column">
+
+
+	<div class="habblet-container ">		
+		<div class="cbb clearfix blue "> 
+			<h2 class="title">Sponsors</h2>
+				<div id="habboclub-info" class="box-content">
+					<!-- (s) EasyHabbo (www.easyhabbo.com) link button 120 by 60 pixels. --><span style="display: none;">http://www.easyhabbo.com/</span><a href="http://www.easyhabbo.com/in-habbohotel-Zap+Hotel" target="_blank"><img src="http://i53.tinypic.com/p97v6.png" alt="EasyHabbo - Exclusive Habbo Hotel private server topsite, retro listings." /></a><!-- (e) EasyHabbo (www.easyhabbo.com) link button 120 by 60 pixels. -->
+				</div>
+		</div>
+	</div>
+	
+	<div class="habblet-container ">		
+		<div class="cbb clearfix blue "> 
+			<h2 class="title">Quick Links</h2>
+				<div id="habboclub-info" class="box-content">
+					<div style="text-align: center;">
+					<!-- 	&raquo; <a href='http://tinychat.com/zaphotelnet'>Official Tinychat</a> <br /> -->
+						&raquo; <a href='%www%/radio.php'>Zap FM</a> <br />
+						&raquo; <a href='http://bolthotel.net/'>Bolt Hotel</a> <br />
+						&raquo; <a href='http://zaphotel.net/profile?page=3'>Gold Bar Redeemer</a> <br />
+						&raquo; <a href='http://swif.me/'>URL Shortener</a> <br />
+					</div>
+				</div>
+		</div>
+	</div>
+
+
+
+</div>

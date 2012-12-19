@@ -1,0 +1,35 @@
+<div class="habblet-container ">		
+<div class="cbb clearfix red "> 
+
+<h2 class="title">Super VIP ($10 USD)</h2>
+<center>
+<br>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="custom" value="<?php echo USER_ID; ?>">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<h2>Pay by Mobile</h2>
+
+<!-- PayGol Form using Post method -->
+<form name="pg_frm" method="post" action="http://www.paygol.com/micropayment/paynow_post" >
+ <input type="hidden" name="pg_serviceid" value="6788">
+ <input type="hidden" name="pg_currency" value="USD">
+ <input type="hidden" name="pg_name" value="Super VIP">
+ <input type="hidden" name="pg_custom" value="">
+ <input type="hidden" name="pg_price" value="10">
+ <input type="hidden" name="pg_return_url" value="http://zaphotel.net/me.php">
+ <input type="hidden" name="pg_cancel_url" value="">
+ <input type="image" name="pg_button" src="http://www.paygol.com/micropayment/img/buttons/150/pay_en_4.png" border="0" alt="Make payments with PayGol: the easiest way!" title="Make payments with PayGol: the easiest way!" >     
+</form> 
+
+
+</center>
+
+
+</div></div>

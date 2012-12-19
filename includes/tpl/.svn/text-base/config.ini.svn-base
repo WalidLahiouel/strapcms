@@ -1,0 +1,9 @@
+[coldfusion]
+DSN=phoenix3
+
+[settings]
+server=Phoenix3
+encryption=MD5
+salt=
+PHPInstalled=true
+style=Default

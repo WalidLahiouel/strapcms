@@ -1,0 +1,51 @@
+<?php
+
+if (!defined('IN_HK') || !IN_HK)
+{
+	exit;
+}
+
+if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
+{
+	exit;
+}
+
+if (isset($_POST['hatext']))
+{
+	fMessage('ok', 'Message sent:<br />"' . clean($_POST['hatext']) . '"');
+	$lol = clean($_POST['hatext']);
+	$hmsg = "" . clean($_POST["hatext"]) . " \r - " . USER_NAME;
+	$core->Mus('ha', $hmsg); // Function exist? Yes it exists
+}
+
+require_once "top.php";
+
+?>			
+
+<h1>Hotel Alert</h1>
+
+<br />
+
+<p>
+	Notify the entire hotel with an alert. Use with care. <i>DO NOT USE APOSTROPHIES (') or QUOTATION MARKS (")</i> <b>This system is logged.</b>
+</p>
+
+<br />
+
+<p>
+<?php if (isset($_POST['hatext'])) { ?>
+<h1 style="padding: 15px;">Message Sent <span style="border: 2px dotted gray; padding: 10px; margin: 5px; font-size: 70%; font-weight: normal;"><?php echo clean($_POST['hatext']); ?></span><input type="button" value="Send new message?" onclick="document.location = 'ha';"></h1>
+<?php } else { ?>
+<form method="post">
+
+<textarea name="hatext" cols="70" rows="10"></textarea>
+<input type="submit" value="Send">
+
+</form>
+</p>
+<?php
+}
+
+require_once "bottom.php";
+
+?>

@@ -1,0 +1,51 @@
+
+<!--[if lt IE 7]>
+<script type="text/javascript">
+Pngfix.doPngImageFix();
+</script>
+<![endif]--> 
+<div id="footer"> 
+<?php /*
+ <!--Wavestreaming.com SHOUTcast Flash Player-->
+                                       <script type="text/javascript" src="http://player.wavestreamer.com/cgi-bin/swf.js?id=WUBCV8PC1LFM7XKN"></script>
+                                       <script type="text/javascript" src=" http://player.wavestreaming.com/?id=WUBCV8PC1LFM7XKN"></script>
+                                   <!--End Player--> */ ?>
+	<p class="footer-links"><br><a href='%www%'>Zap Hotel</a> | <a href='%www%/papers/Disclaimer'>Disclaimer</a> | <a href='%www%/rp.php'>Refund Policy</a> | <a href='%www%/tos.php'>Terms of Service</a> | <a href='http://zapgaming.net/' target='_new'>Forum</a> | <strong><a href='http://bolthotel.net/' target='_blank'>Bolt Hotel</a></strong></p> 
+	<p class="copyright">Zap Hotel is privately managed by the <a href='http://hybridcore.net/'>WSDS</a> Group<br /> Copyright &copy; Zap Hotel 2011 - All Rights Reserved to their respective owner(s).<br>
+	<br><a href="http://thehabbos.org/topsites/vote/Zappy123"><img src="http://thehabbos.org/button.php" border="0"></a><br><br>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6357539891383883";
+/* ZapFooter2 */
+google_ad_slot = "7139565361";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6357539891383883";
+/* ZapFooter2 */
+google_ad_slot = "7139565361";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>	
+
+
+<div style="clear: both;"></div>
+	
+</div>    </div> 
+</div></div>
+ 
+<script type="text/javascript"> 
+HabboView.run();
+</script> 
+ 
+</body> 
+</html> 

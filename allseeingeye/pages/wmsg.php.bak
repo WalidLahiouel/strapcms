@@ -1,0 +1,47 @@
+<?php
+
+if (!defined('IN_HK') || !IN_HK)
+{
+	exit;
+}
+
+if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
+{
+	exit;
+}
+
+if (isset($_POST['maintmsg']))
+{
+	dbquery("INSERT INTO maint_news (content,author) VALUES ('" .$_POST['maintmsg']. "', '" . USER_NAME . "')");
+}
+
+require_once "top.php";
+
+?>			
+
+<h1>Maintenance Message System</h1>
+
+<br />
+
+<p>
+If the hotel is on maintenance, Administrators can use this form to post a message to the maintenance page. Useful if you don't like twitter.	</i>
+</p>
+
+<br />
+
+<p>
+<?php if (isset($_POST['maintmsg'])) { ?>
+<h1 style="padding: 15px;">Message posted. <a href="http://zaphotel.net/manage/index.php?_cmd=main">Return to dashboard</a></h1> <?php } else { ?>
+<form method="post">
+
+<textarea name="maintmsg" cols="30" rows="3"></textarea>
+<input type="submit" value="Post">
+
+</form>
+</p>
+<?php
+}
+
+require_once "bottom.php";
+
+?>
