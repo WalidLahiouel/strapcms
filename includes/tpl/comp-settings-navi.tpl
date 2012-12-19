@@ -3,14 +3,12 @@
 <div class="habblet-container" style="float:left; width:210px;"> 
 <div class="cbb settings"> 
  
-<h2 class="title">Navigator</h2> 
+<h2 class="title">Paramètres</h2> 
 <div class="box-content"> 
             <div id="settingsNavigation"> 
             <ul> 
-			<li class=<?php if(clean($_GET["page"]) == "1") { echo '"selected"'; } else { echo " "; } ?>><a href="profile?page=1">Account Settings</a></li>
-			<li class=<?php if(clean($_GET["page"]) == "2") { echo '"selected"'; } else { echo " "; } ?>><a href="profile?page=2">Password Settings</a></li>
-			<li class=<?php if(clean($_GET["page"]) == "3") { echo '"selected"'; } else { echo " "; } ?>><a href="profile?page=3">Goldbar Redeemer</a></li>
-			<li class=<?php if(clean($_GET["page"]) == "4") { echo '"selected"'; } else { echo " "; } ?>><a href="profile?page=4">Username Manager</a></li>
+			<li class=<?php if(clean($_GET["page"]) == "1") { echo '"selected"'; } else { echo " "; } ?>><a href="<?php echo WWW; ?>/profile/profileupdate">Paramètres de compte</a></li>
+			<li class=<?php if(clean($_GET["page"]) == "2") { echo '"selected"'; } else { echo " "; } ?>><a href="<?php echo WWW; ?>/profile/changepassword">Changement de mot de passe</a></li>
             </ul> 
             </div> 
 </div></div> 
